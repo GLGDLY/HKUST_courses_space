@@ -8,7 +8,7 @@ from github import Github
 from fetch import fetch_course_intro
 from md_parser import CourseReadmeIO, ReadmeIO, ReviewParser
 
-title_regex = re_compile(r"\[Review]: *(\s\S*)")
+title_regex = re_compile(r"\[Review]: *([\s\S]*)")
 with open("courses.json", "r") as cf:
     all_courses = loads(cf.read())
 

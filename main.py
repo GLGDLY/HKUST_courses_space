@@ -5,6 +5,7 @@ from re import compile as re_compile
 from github import Github
 
 from md_parser import CourseReadmeIO, ReadmeIO, ReviewParser
+from fetch import fetch_course_intro
 
 title_regex = re_compile(r"\[Review]: *(\s\S*)")
 with open("courses.json", "r") as cf:
@@ -40,6 +41,7 @@ def main():
         if body.course_code not in all_courses:
             # update review data to courses.json
             all_courses[body.course_code] = {
+                "intro": fetch_course_intro(body.course_code),
                 "rating_number": 1,
                 "content_rating_sum": body.rating_content,
                 "teaching_rating_sum": body.rating_teaching,
@@ -75,7 +77,7 @@ def main():
             f.write(rendered)
 
         # create or update course->README.md
-        course_readme = CourseReadmeIO(body.course_code)
+        course_readme = CourseReadmeIO(body.course_code, all_courses[body.course_code]["intro"])
         course_readme.write(all_courses[body.course_code], body.course_code)
 
         # add labels and close issue

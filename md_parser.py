@@ -110,8 +110,9 @@ class ReadmeIO:
     def write(self, all_courses: dict):
         course_content = "<!-- BEGIN INPUT -->\n"
         for course in all_courses:
-            course_content += "- [{} ({})]({})\n".format(
+            course_content += "- [{} - {} ({})]({})\n".format(
                 course,
+                all_courses[course]["intro"],
                 Rating(
                     round(
                         all_courses[course]["overall_rating_sum"]
@@ -128,11 +129,11 @@ class ReadmeIO:
 
 
 class CourseReadmeIO:
-    def __init__(self, course_code: str):
+    def __init__(self, course_code: str, course_intro: str):
         if not os.path.exists("./reviews/" + course_code + "/README.md"):
             with open("./reviews/" + course_code + "/README.md", "w") as f:
                 with open("./course_readme_template.md", "r") as template:
-                    f.write(template.read().format(Course=course_code))
+                    f.write(template.read().format(Course=course_code + " - " + course_intro))
         else:
             with open("./reviews/" + course_code + "/README.md", "r") as f:
                 self.readme = f.read()

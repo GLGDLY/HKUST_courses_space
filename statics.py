@@ -10,9 +10,9 @@ class Rating(Enum):
 
 
 RatingSVG = [
-    "![](https://github.com/GLGDLY/HKUST_courses_space/images/A.svg)",
-    "![](https://github.com/GLGDLY/HKUST_courses_space/images/B.svg)",
-    "![](https://github.com/GLGDLY/HKUST_courses_space/images/C.svg)",
-    "![](https://github.com/GLGDLY/HKUST_courses_space/images/D.svg)",
-    "![](https://github.com/GLGDLY/HKUST_courses_space/images/E.svg)",
+    "A.svg",
+    "B.svg",
+    "C.svg",
+    "D.svg",
+    "E.svg",
 ]

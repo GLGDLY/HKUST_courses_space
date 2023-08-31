@@ -56,10 +56,6 @@ def main():
             with open("courses.json", "w") as f:
                 f.write(dumps(all_courses))
 
-            # add course to README.md
-            readme = ReadmeIO()
-            readme.write(all_courses)
-
             # create course folder
             os.makedirs("./reviews/" + body.course_code)
         else:
@@ -72,6 +68,10 @@ def main():
             all_courses[body.course_code]["reviews"][issue_id] = title
             with open("courses.json", "w") as f:
                 f.write(dumps(all_courses))
+
+        # update course to README.md
+        readme = ReadmeIO()
+        readme.write(all_courses)
 
         # save rendered review to ./reviews/<course_code>/<id>.md
         with open(

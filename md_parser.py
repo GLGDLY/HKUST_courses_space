@@ -67,11 +67,15 @@ class ReviewParser:
             + "|"
             + (len(d["Contents"]) * " ---------------- |")
         )
-        d["Rating for Content"] = RatingSVG[d["Rating for Content"]]
-        d["Rating for Teaching"] = RatingSVG[d["Rating for Teaching"]]
-        d["Rating for Grade"] = RatingSVG[d["Rating for Grade"]]
-        d["Rating for Workload"] = RatingSVG[d["Rating for Workload"]]
-        d["Rating Overall"] = RatingSVG[d["Rating Overall"]]
+        d["Rating for Content"] = f'![](../images/{RatingSVG[d["Rating for Content"]]})'
+        d[
+            "Rating for Teaching"
+        ] = f'![](../images/{RatingSVG[d["Rating for Teaching"]]})'
+        d["Rating for Grade"] = f'![](../images/{RatingSVG[d["Rating for Grade"]]})'
+        d[
+            "Rating for Workload"
+        ] = f'![](../images/{RatingSVG[d["Rating for Workload"]]})'
+        d["Rating Overall"] = f'![](../images/{RatingSVG[d["Rating Overall"]]})'
 
         with open("./reviews/review_template.md", "r") as f:
             template = f.read()
@@ -110,16 +114,18 @@ class ReadmeIO:
     def write(self, all_courses: dict):
         course_content = "<!-- BEGIN INPUT -->\n"
         for course in all_courses:
-            course_content += "- [{} - {} ({})]({})\n".format(
+            course_content += "- [{} - {}]({}) {}\n".format(
                 course,
                 all_courses[course]["intro"],
-                Rating(
-                    round(
-                        all_courses[course]["overall_rating_sum"]
-                        / all_courses[course]["rating_number"]
-                    )
-                ).name,
                 "./reviews/" + course,
+                "![](./images/{})".format(
+                    RatingSVG[
+                        round(
+                            all_courses[course]["overall_rating_sum"]
+                            / all_courses[course]["rating_number"]
+                        )
+                    ]
+                ),
             )
         course_content += "<!-- END INPUT -->"
 
@@ -143,21 +149,21 @@ class CourseReadmeIO:
 
     def write(self, course: dict, course_code: str):
         # calculate course average rating and save as svg for course->README.md
-        content_avg_rating = RatingSVG[
-            round(course["content_rating_sum"] / course["rating_number"])
-        ]
-        teaching_avg_rating = RatingSVG[
-            round(course["teaching_rating_sum"] / course["rating_number"])
-        ]
-        grade_avg_rating = RatingSVG[
-            round(course["grade_rating_sum"] / course["rating_number"])
-        ]
-        workload_avg_rating = RatingSVG[
-            round(course["workload_rating_sum"] / course["rating_number"])
-        ]
-        overall_avg_rating = RatingSVG[
-            round(course["overall_rating_sum"] / course["rating_number"])
-        ]
+        content_avg_rating = "![](../images/{})".format(
+            RatingSVG[round(course["content_rating_sum"] / course["rating_number"])]
+        )
+        teaching_avg_rating = "![](../images/{})".format(
+            RatingSVG[round(course["teaching_rating_sum"] / course["rating_number"])]
+        )
+        grade_avg_rating = "![](../images/{})".format(
+            RatingSVG[round(course["grade_rating_sum"] / course["rating_number"])]
+        )
+        workload_avg_rating = "![](../images/{})".format(
+            RatingSVG[round(course["workload_rating_sum"] / course["rating_number"])]
+        )
+        overall_avg_rating = "![](../images/{})".format(
+            RatingSVG[round(course["overall_rating_sum"] / course["rating_number"])]
+        )
 
         # construct content
         course_content = "<!-- BEGIN INPUT -->\n\n"

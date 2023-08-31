@@ -44,12 +44,11 @@ def main():
             # update review data to courses.json
             all_courses[body.course_code] = {
                 "intro": fetch_course_intro(body.course_code),
-                "rating_number": 1,
-                "content_rating_sum": body.rating_content,
-                "teaching_rating_sum": body.rating_teaching,
-                "grade_rating_sum": body.rating_grade,
-                "workload_rating_sum": body.rating_workload,
-                "overall_rating_sum": body.rating_overall,
+                "content_rating_sum": {issue_id: body.rating_content},
+                "teaching_rating_sum": {issue_id: body.rating_teaching},
+                "grade_rating_sum": {issue_id: body.rating_grade},
+                "workload_rating_sum": {issue_id: body.rating_workload},
+                "overall_rating_sum": {issue_id: body.rating_overall},
                 "reviews": {issue_id: title},
             }
             all_courses = dict(sorted(all_courses.items(), reverse=True))
@@ -59,12 +58,19 @@ def main():
             # create course folder
             os.makedirs("./reviews/" + body.course_code)
         else:
-            all_courses[body.course_code]["rating_number"] += 1
-            all_courses[body.course_code]["content_rating_sum"] += body.rating_content
-            all_courses[body.course_code]["teaching_rating_sum"] += body.rating_teaching
-            all_courses[body.course_code]["grade_rating_sum"] += body.rating_grade
-            all_courses[body.course_code]["workload_rating_sum"] += body.rating_workload
-            all_courses[body.course_code]["overall_rating_sum"] += body.rating_overall
+            if issue_id in all_courses[body.course_code]["reviews"]:
+                all_courses[body.course_code]["content_rating_sum"][issue_id] = body.rating_content
+                all_courses[body.course_code]["teaching_rating_sum"][issue_id] = body.rating_teaching
+                all_courses[body.course_code]["grade_rating_sum"][issue_id] = body.rating_grade
+                all_courses[body.course_code]["workload_rating_sum"][issue_id] = body.rating_workload
+                all_courses[body.course_code]["overall_rating_sum"][issue_id] = body.rating_overall
+            else:
+                all_courses[body.course_code]["content_rating_sum"][issue_id] = body.rating_content
+                all_courses[body.course_code]["teaching_rating_sum"][issue_id] = body.rating_teaching
+                all_courses[body.course_code]["grade_rating_sum"][issue_id] = body.rating_grade
+                all_courses[body.course_code]["workload_rating_sum"][issue_id] = body.rating_workload
+                all_courses[body.course_code]["overall_rating_sum"][issue_id] = body.rating_overall
+
             all_courses[body.course_code]["reviews"][issue_id] = title
             with open("courses.json", "w") as f:
                 f.write(dumps(all_courses))

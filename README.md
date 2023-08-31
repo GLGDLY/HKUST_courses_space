@@ -12,5 +12,9 @@ This is a space for HKUST students to share their experience on courses they hav
 ## Reviews
 
 <!-- BEGIN INPUT -->
-- [COMP1021 - ](./reviews/COMP1021) ![](./images/A.svg)
+| Course | Intro | Rating |
+| --------- | --------- | --------- |
+| [COMP1021](./reviews/COMP1021) |  | ![](./images/A.svg) |
+
+
 <!-- END INPUT -->

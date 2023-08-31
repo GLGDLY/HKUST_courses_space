@@ -8,8 +8,10 @@ readme_replace_regex = re_compile(r"<!-- BEGIN INPUT -->[\s\S]*<!-- END INPUT --
 
 img_relative_path_in_reviews = "![](../../images/{})"
 img_relative_path_in_root = "![](./images/{})"
-img_path_with_size = '<img src="https://github.com/GLGDLY/HKUST_courses_space/raw/master/images/{}" ' \
-                     'width="{}" height="{}">'
+img_path_with_size = (
+    '<img src="https://github.com/GLGDLY/HKUST_courses_space/raw/master/images/{}" '
+    'width="{}" height="{}">'
+)
 
 
 class ReviewParser:
@@ -163,24 +165,54 @@ class CourseReadmeIO:
     def write(self, course: dict, course_code: str):
         # calculate course average rating and save as svg for course->README.md
         content_avg_rating = img_path_with_size.format(
-            RatingSVG[round(sum(course["content_rating_sum"].values()) / len(course["content_rating_sum"]))],
-            30, 30
+            RatingSVG[
+                round(
+                    sum(course["content_rating_sum"].values())
+                    / len(course["content_rating_sum"])
+                )
+            ],
+            30,
+            30,
         )
         teaching_avg_rating = img_path_with_size.format(
-            RatingSVG[round(sum(course["teaching_rating_sum"].values()) / len(course["teaching_rating_sum"]))],
-            30, 30
+            RatingSVG[
+                round(
+                    sum(course["teaching_rating_sum"].values())
+                    / len(course["teaching_rating_sum"])
+                )
+            ],
+            30,
+            30,
         )
         grade_avg_rating = img_path_with_size.format(
-            RatingSVG[round(sum(course["grade_rating_sum"].values()) / len(course["grade_rating_sum"]))],
-            30, 30
+            RatingSVG[
+                round(
+                    sum(course["grade_rating_sum"].values())
+                    / len(course["grade_rating_sum"])
+                )
+            ],
+            30,
+            30,
         )
         workload_avg_rating = img_path_with_size.format(
-            RatingSVG[round(sum(course["workload_rating_sum"].values()) / len(course["workload_rating_sum"]))],
-            30, 30
+            RatingSVG[
+                round(
+                    sum(course["workload_rating_sum"].values())
+                    / len(course["workload_rating_sum"])
+                )
+            ],
+            30,
+            30,
         )
         overall_avg_rating = img_path_with_size.format(
-            RatingSVG[round(sum(course["overall_rating_sum"].values()) / len(course["overall_rating_sum"]))],
-            50, 50
+            RatingSVG[
+                round(
+                    sum(course["overall_rating_sum"].values())
+                    / len(course["overall_rating_sum"])
+                )
+            ],
+            50,
+            50,
         )
 
         # construct content

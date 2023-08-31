@@ -13,6 +13,7 @@ with open("courses.json", "r") as cf:
 
 
 def main():
+    global all_courses
     # fetch issue data
     repo = Github(os.environ["GITHUB_TOKEN"]).get_repo(os.environ["GITHUB_REPOSITORY"])
     issue_id = int(os.environ["ISSUE_NUMBER"])
@@ -50,6 +51,7 @@ def main():
                 "overall_rating_sum": body.rating_overall,
                 "reviews": {issue_id: title},
             }
+            all_courses = dict(sorted(all_courses.items(), reverse=True))
             with open("courses.json", "w") as f:
                 f.write(dumps(all_courses))
 

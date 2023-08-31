@@ -6,6 +6,7 @@ from github import Github
 
 from md_parser import CourseReadmeIO, ReadmeIO, ReviewParser
 from fetch import fetch_course_intro
+from traceback import format_exc
 
 title_regex = re_compile(r"\[Review]: *(\s\S*)")
 with open("courses.json", "r") as cf:
@@ -89,7 +90,7 @@ def main():
     except Exception as e:
         issue.edit(state="closed", labels=["Invalid"])
         issue.create_comment("render review error: " + str(e))
-        return False, "ERROR: " + str(e)
+        return False, "ERROR: " + str(e) + "\n" + format_exc()
 
     return True, ""
 

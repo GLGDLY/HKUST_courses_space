@@ -1,2 +1,4 @@
 PyGithub
 requests
+pyOpenSSL
+idna

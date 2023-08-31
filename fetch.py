@@ -20,6 +20,7 @@ def fetch_course_intro(course_code: str) -> str:
                 "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
                 "Chrome/116.0.0.0 Safari/537.36"
             },
+            verify=False,
         )
         all_course_intros = course_title_regex.findall(course_page.text)
         for course_intro in all_course_intros:

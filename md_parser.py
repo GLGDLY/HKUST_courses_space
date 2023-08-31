@@ -194,7 +194,7 @@ class CourseReadmeIO:
             grade_avg_rating,
             workload_avg_rating,
         )
-        course_content += "***Overall Rating:***\n{}\n\n".format(overall_avg_rating)
+        course_content += "***Overall Rating:***\n\n{}\n\n".format(overall_avg_rating)
         course_content += "## Reviews\n\n"
         for issue_id in course["reviews"]:
             course_content += "- [{}]({})\n".format(

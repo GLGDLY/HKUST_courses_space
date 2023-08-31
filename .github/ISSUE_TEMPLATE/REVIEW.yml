@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         **Please fill in the following information following the given format.**
-        ***Do not change the title.***
+        ***keep the title in format of `[Review]: <Your Title>`***
   - type: input
     id: course
     attributes:

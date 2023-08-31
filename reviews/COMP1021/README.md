@@ -1,4 +1,4 @@
-# COMP1021 - 
+# COMP1021 - Introduction to Computer Science
 
 <!-- BEGIN INPUT -->
 

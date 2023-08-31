@@ -6,7 +6,7 @@ This is a space for HKUST students to share their experience on courses they hav
 
 ## How to write a review?
 
-* Go to [issue](https://github.com/GLGDLY/HKUST_courses_space/issues/new), choose `Review` and fill in contents with the given template. 
+* Go to [issue](https://github.com/GLGDLY/HKUST_courses_space/issues/new/choose), choose `Review` and fill in contents with the given template. 
 * Rendered review would be automatically generated and updated to this repo.
 
 ## Reviews

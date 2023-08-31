@@ -3,7 +3,7 @@
 > Posted on: {Date}
 > Posted by: {Author}
 
-***Overall Rating: ![](data:image/svg+xml,{Rating Overall})***
+***Overall Rating: {Rating Overall}***
 
 {Contents}
 
@@ -12,7 +12,7 @@
 
 ## Content
 
-![](data:image/svg+xml,{Rating for Content})
+{Rating for Content}
 
 ```text
 {Reason for Rating Content}
@@ -20,7 +20,7 @@
 
 ## Teaching
 
-![](data:image/svg+xml,{Rating for Teaching})
+{Rating for Teaching}
 
 ```text
 {Reason for Rating Teaching}
@@ -28,7 +28,7 @@
 
 ## Grade
 
-![](data:image/svg+xml,{Rating for Grade})
+{Rating for Grade}
 
 ```text
 {Reason for Rating Grade}
@@ -36,7 +36,7 @@
 
 ## Workload
 
-![](data:image/svg+xml,{Rating for Workload})
+{Rating for Workload}
 
 ```text
 {Reason for Rating Workload}

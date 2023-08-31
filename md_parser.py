@@ -75,7 +75,7 @@ class ReviewParser:
 
         with open("./reviews/review_template.md", "r") as f:
             template = f.read()
-        return template.format(title=title, **self.data)
+        return template.format(title=title, **d)
 
     @property
     def course_code(self) -> str:
@@ -133,7 +133,11 @@ class CourseReadmeIO:
         if not os.path.exists("./reviews/" + course_code + "/README.md"):
             with open("./reviews/" + course_code + "/README.md", "w") as f:
                 with open("./course_readme_template.md", "r") as template:
-                    f.write(template.read().format(Course=course_code + " - " + course_intro))
+                    f.write(
+                        template.read().format(
+                            Course=course_code + " - " + course_intro
+                        )
+                    )
         else:
             with open("./reviews/" + course_code + "/README.md", "r") as f:
                 self.readme = f.read()

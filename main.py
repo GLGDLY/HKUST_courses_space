@@ -1,12 +1,12 @@
 import os
 from json import dumps, loads
 from re import compile as re_compile
+from traceback import format_exc
 
 from github import Github
 
-from md_parser import CourseReadmeIO, ReadmeIO, ReviewParser
 from fetch import fetch_course_intro
-from traceback import format_exc
+from md_parser import CourseReadmeIO, ReadmeIO, ReviewParser
 
 title_regex = re_compile(r"\[Review]: *(\s\S*)")
 with open("courses.json", "r") as cf:
@@ -80,7 +80,9 @@ def main():
             f.write(rendered)
 
         # create or update course->README.md
-        course_readme = CourseReadmeIO(body.course_code, all_courses[body.course_code]["intro"])
+        course_readme = CourseReadmeIO(
+            body.course_code, all_courses[body.course_code]["intro"]
+        )
         course_readme.write(all_courses[body.course_code], body.course_code)
 
         # add labels and close issue

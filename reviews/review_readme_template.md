@@ -1,4 +1,4 @@
-# {Course}
+# {Course} - {Intro}
 
 <!-- BEGIN INPUT -->
 

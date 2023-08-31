@@ -1,5 +1,5 @@
 import os
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 from re import compile as re_compile
 
 from statics import Rating, RatingSVG
@@ -65,7 +65,7 @@ class ReviewParser:
         :return: markdown string
         """
         d = self.data.copy()
-        d["Date"] = datetime.now().strftime("%Y-%m-%d %H:%M")
+        d["Date"] = datetime.now(tz=timezone(offset=timedelta(hours=8))).strftime("%Y-%m-%d %H:%M on HK Time")
         d["Author"] = author
         d["Contents"] = (
             "| "
@@ -151,10 +151,11 @@ class ReadmeIO:
 
 class CourseReadmeIO:
     def __init__(self, course_code: str, course_intro: str):
+        print(f"creating course readme for {course_code} - {course_intro}")
         if not os.path.exists("./reviews/" + course_code + "/README.md"):
             with open("./reviews/review_readme_template.md", "r") as template:
                 self.readme = template.read().format(
-                    Course=course_code + " - " + course_intro
+                    Course=course_code, Intro=course_intro
                 )
             with open("./reviews/" + course_code + "/README.md", "w") as f:
                 f.write(self.readme)

@@ -111,6 +111,7 @@ def main():
             f.write(rendered)
 
         # create or update course->README.md
+        print(f"creating course readme for {body.course_code} - {all_courses[body.course_code]['intro']}")
         course_readme = CourseReadmeIO(
             body.course_code, all_courses[body.course_code]["intro"]
         )

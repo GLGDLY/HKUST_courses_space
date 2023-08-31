@@ -9,16 +9,17 @@ from fetch import fetch_course_intro
 from md_parser import CourseReadmeIO, ReadmeIO, ReviewParser
 
 title_regex = re_compile(r"\[Review]: *([\s\S]*)")
-with open("courses.json", "r") as cf:
-    all_courses = loads(cf.read())
 
 
 def main():
-    global all_courses
+    # load previous records
+    with open("courses.json", "r") as f:
+        all_courses = loads(f.read())
+
     # fetch issue data
     repo = Github(os.environ["GITHUB_TOKEN"]).get_repo(os.environ["GITHUB_REPOSITORY"])
-    issue_id = int(os.environ["ISSUE_NUMBER"])
-    issue = repo.get_issue(number=issue_id)
+    issue_id = os.environ["ISSUE_NUMBER"]
+    issue = repo.get_issue(number=int(issue_id))
     issue_author = "@" + issue.user.login
 
     try:
@@ -51,9 +52,6 @@ def main():
                 "overall_rating_sum": {issue_id: body.rating_overall},
                 "reviews": {issue_id: title},
             }
-            all_courses = dict(sorted(all_courses.items(), reverse=True))
-            with open("courses.json", "w") as f:
-                f.write(dumps(all_courses))
 
             # create course folder
             os.makedirs("./reviews/" + body.course_code)
@@ -74,8 +72,11 @@ def main():
                 all_courses[body.course_code]["overall_rating_sum"][issue_id] = body.rating_overall
 
             all_courses[body.course_code]["reviews"][issue_id] = title
-            with open("courses.json", "w") as f:
-                f.write(dumps(all_courses))
+
+        # sort and save courses.json
+        all_courses = dict(sorted(all_courses.items(), reverse=True))
+        with open("courses.json", "w") as f:
+            f.write(dumps(all_courses))
 
         # update course to README.md
         readme = ReadmeIO()

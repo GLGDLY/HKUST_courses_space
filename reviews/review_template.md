@@ -2,7 +2,7 @@
 
 > Posted on: {Date}
 > 
-> Posted by: {Author} On [#{ISSUE ID}](/GLGDLY/HKUST_courses_space/issues/{ISSUE ID})
+> Posted by: {Author} On [#{ISSUE ID}](https://github.com/GLGDLY/HKUST_courses_space/issues/{ISSUE ID})
 
 {Contents}
 

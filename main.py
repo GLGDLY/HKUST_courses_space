@@ -38,7 +38,7 @@ def main():
         body = ReviewParser(body)
 
         # render template
-        rendered = body.render(title, issue_author)
+        rendered = body.render(title, issue_author, issue_id)
 
         # check if course exists in previous records
         if body.course_code not in all_courses:

@@ -56,7 +56,7 @@ class ReviewParser:
             elif current_section is not None and line and not line.startswith("```"):
                 self.data[current_section] += line + "\n"
 
-    def render(self, title: str, author: str) -> str:
+    def render(self, title: str, author: str, issue_id: str) -> str:
         """
         render the review on review_template.md
         :param title: title of the review
@@ -90,6 +90,8 @@ class ReviewParser:
         d["Rating Overall"] = img_path_with_size.format(
             RatingSVG[d["Rating Overall"]], 40, 40
         )
+
+        d["ISSUE ID"] = issue_id
 
         with open("./reviews/review_template.md", "r") as f:
             template = f.read()

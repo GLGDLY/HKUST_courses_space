@@ -2,12 +2,12 @@
 
 > Posted on: {Date}
 > 
-> Posted by: {Author}
+> Posted by: {Author} On [#{ISSUE ID}](/GLGDLY/HKUST_courses_space/issues/{ISSUE ID})
+
+{Contents}
 
 ## Overall Rating:
 {Rating Overall}
-
-{Contents}
 
 - Semester taken: {Year} {Semester}
 - Instructor: {Instructor}

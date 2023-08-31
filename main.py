@@ -57,11 +57,6 @@ def main():
 
             # create course folder
             os.makedirs("./reviews/" + body.course_code)
-
-            # create course->README.md
-            course_readme = CourseReadmeIO(body.course_code)
-            course_readme.write(all_courses[body.course_code], body.course_code)
-
         else:
             all_courses[body.course_code]["rating_number"] += 1
             all_courses[body.course_code]["content_rating_sum"] += body.rating_content
@@ -78,6 +73,14 @@ def main():
             "./reviews/" + body.course_code + "/" + str(issue_id) + ".md", "w"
         ) as f:
             f.write(rendered)
+
+        # create or update course->README.md
+        course_readme = CourseReadmeIO(body.course_code)
+        course_readme.write(all_courses[body.course_code], body.course_code)
+
+        # add labels and close issue
+        issue.create_comment("review has been rendered successfully.")
+        issue.edit(state="closed", labels=[body.course_code])
 
     except Exception as e:
         issue.edit(state="closed", labels=["Invalid"])

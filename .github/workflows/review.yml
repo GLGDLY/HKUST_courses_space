@@ -2,7 +2,7 @@ name: review
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited, reopened]
 
 permissions: write-all
 

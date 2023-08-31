@@ -6,7 +6,8 @@ body:
   - type: markdown
     attributes:
       value: |
-        **Please fill in the following information following the given format. Mind that the information will be public, please be polite and respectful.**
+        **Please fill in the following information following the given format.**
+        ***Do not change the title.***
   - type: input
     id: course
     attributes:

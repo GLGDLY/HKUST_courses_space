@@ -73,7 +73,7 @@ class ReviewParser:
         d["Rating for Workload"] = RatingSVG[d["Rating for Workload"]]
         d["Rating Overall"] = RatingSVG[d["Rating Overall"]]
 
-        with open("review_template.md", "r") as f:
+        with open("./reviews/review_template.md", "r") as f:
             template = f.read()
         return template.format(title=title, **self.data)
 

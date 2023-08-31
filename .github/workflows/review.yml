@@ -1,0 +1,35 @@
+name: review
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  move:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setting up environment
+        run: |
+          echo ISSUE_NUMBER="${{ github.event.issue.number }}" >> $GITHUB_ENV
+          echo GITHUB_TOKEN="${{ secrets.GITHUB_TOKEN }}" >> $GITHUB_ENV
+
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+            python-version: '3.10'
+
+      - name: Update
+        run: |
+          pip install -r requirements.txt
+          python main.py
+
+      - name: Commit and push changes
+        env:
+          ISSUE_TITLE: ${{ github.event.issue.title }}
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "${ISSUE_TITLE} by ${{ github.event.issue.user.login }}"
+          git push

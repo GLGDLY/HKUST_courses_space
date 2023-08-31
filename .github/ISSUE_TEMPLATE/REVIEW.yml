@@ -1,0 +1,156 @@
+name: Review
+description: Review on a HKUST course
+title: "[Review]: "
+labels: ["review", "course"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Please fill in the following information following the given format. Mind that the information will be public, please be polite and respectful.**
+  - type: input
+    id: course
+    attributes:
+      label: Course Code
+      description: "e.g. COMP 1021"
+      placeholder: "COMP 1021"
+    validations:
+      required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year
+      description: "e.g. 2023"
+      placeholder: "2023"
+  - type: dropdown
+    id: semester
+    attributes:
+        label: Semester
+        description: "e.g. Fall"
+        multiple: false
+        options:
+            - Fall
+            - Winter
+            - Spring
+            - Summer
+        default: 0
+    validations:
+      required: true
+  - type: input
+    id: instructor
+    attributes:
+      label: Instructor
+      description: "e.g. XYZ"
+      placeholder: "XYZ"
+    validations:
+      required: false
+  - type: checkboxes
+    id: contents
+    attributes:
+      label: Contents
+      description: "Please select all contents that apply to this course."
+      options:
+        - label: "Group Project"
+        - label: "Individual Project"
+        - label: "Essay"
+        - label: "Presentation"
+        - label: "Exam"
+        - label: "Quiz"
+        - label: "Assignment"
+        - label: "Lab"
+        - label: "Attendance"
+  - type: dropdown
+    id: rating_content
+    attributes:
+      label: Rating for Content
+      description: "How do you rate the content of the course?"
+      multiple: false
+      options:
+        - A
+        - B
+        - C
+        - D
+        - E
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: rating_content_reason
+    attributes:
+      label: Reason for Rating Content
+      description: "Why do you rate the content of the course in this way?"
+      placeholder: "I think the content of the course is ..."
+      render: "Text"
+    validations:
+      required: true
+  - type: dropdown
+    id: rating_teaching
+    attributes:
+      label: Rating for Teaching
+      description: "How do you rate the teaching of the course?"
+      multiple: false
+      options:
+        - A
+        - B
+        - C
+        - D
+        - E
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: rating_teaching_reason
+    attributes:
+      label: Reason for Rating Teaching
+      description: "Why do you rate the teaching of the course in this way?"
+      placeholder: "I think the teaching of the course is ..."
+      render: "Text"
+    validations:
+      required: true
+  - type: dropdown
+    id: rating_grade
+    attributes:
+      label: Rating for Grade
+      description: "How do you rate the grade of the course?"
+      multiple: false
+      options:
+        - A
+        - B
+        - C
+        - D
+        - E
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: rating_grade_reason
+    attributes:
+      label: Reason for Rating Grade
+      description: "Why do you rate the grade of the course in this way?"
+      placeholder: "I think the grade of the course is ..."
+      render: "Text"
+    validations:
+      required: true
+  - type: dropdown
+    id: rating_workload
+    attributes:
+      label: Rating for Workload
+      description: "How do you rate the workload of the course?"
+      multiple: false
+      options:
+        - A
+        - B
+        - C
+        - D
+        - E
+      default: 0
+    validations:
+      required: true
+  - type: textarea
+    id: rating_workload_reason
+    attributes:
+      label: Reason for Rating Workload
+      description: "Why do you rate the workload of the course in this way?"
+      placeholder: "I think the workload of the course is ..."
+      render: "Text"
+    validations:
+      required: true

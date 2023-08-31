@@ -41,7 +41,6 @@ body:
     attributes:
       label: Instructor
       description: "e.g. XYZ"
-      placeholder: "XYZ"
     validations:
       required: false
   - type: checkboxes

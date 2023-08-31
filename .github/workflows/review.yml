@@ -4,8 +4,10 @@ on:
   issues:
     types: [opened]
 
+permissions: write-all
+
 jobs:
-  move:
+  review:
     runs-on: ubuntu-latest
 
     steps:

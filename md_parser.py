@@ -132,7 +132,7 @@ class CourseReadmeIO:
     def __init__(self, course_code: str, course_intro: str):
         if not os.path.exists("./reviews/" + course_code + "/README.md"):
             with open("./reviews/" + course_code + "/README.md", "w") as f:
-                with open("./course_readme_template.md", "r") as template:
+                with open("./reviews/course_readme_template.md", "r") as template:
                     f.write(
                         template.read().format(
                             Course=course_code + " - " + course_intro

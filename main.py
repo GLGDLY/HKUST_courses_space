@@ -58,6 +58,8 @@ def main():
             # create course folder
             os.makedirs("./reviews/" + body.course_code)
         else:
+            if all_courses[body.course_code]["intro"] == "":
+                all_courses[body.course_code]["intro"] = fetch_course_intro(body.course_code)
             if issue_id in all_courses[body.course_code]["reviews"]:
                 all_courses[body.course_code]["content_rating_sum"][issue_id] = body.rating_content
                 all_courses[body.course_code]["teaching_rating_sum"][issue_id] = body.rating_teaching

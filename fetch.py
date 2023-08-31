@@ -25,6 +25,6 @@ def fetch_course_intro(course_code: str) -> str:
         for course_intro in all_course_intros:
             if course_intro[0] + course_intro[1] == course_code:
                 return course_intro[2]
-    except Exception:
-        pass
+    except Exception as e:
+        print("Error fetching course intro: " + str(e))
     return ""

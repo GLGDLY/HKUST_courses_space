@@ -20,8 +20,8 @@ body:
     id: year
     attributes:
       label: Year
-      description: "e.g. 2023"
-      placeholder: "2023"
+      description: "e.g. 23-24"
+      placeholder: "23-24"
   - type: dropdown
     id: semester
     attributes:

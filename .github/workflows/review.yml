@@ -9,6 +9,7 @@ permissions: write-all
 jobs:
   review:
     runs-on: ubuntu-latest
+    if: startsWith(github.event.issue.title, '[Review]:')
 
     steps:
       - name: Setting up environment

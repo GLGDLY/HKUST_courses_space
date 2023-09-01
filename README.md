@@ -14,7 +14,7 @@ This is a space for HKUST students to share their experience on courses they hav
 <!-- BEGIN INPUT -->
 | Course | Intro | Rating |
 | --------- | --------- | --------- |
-| [COMP1021](./reviews/COMP1021) | Introduction to Computer Science | ![](./images/A.svg) |
+| [COMP1021](./reviews/COMP1021/README.md) | Introduction to Computer Science | ![](./images/A.svg) |
 
 
 <!-- END INPUT -->

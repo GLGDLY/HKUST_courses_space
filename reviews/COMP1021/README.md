@@ -6,11 +6,11 @@
 
 | Content | Teaching | Grade | Workload |
 | --------- | --------- | --------- | --------- |
-| <img src="https://github.com/GLGDLY/HKUST_courses_space/raw/master/images/B.svg" width="30" height="30"> | <img src="https://github.com/GLGDLY/HKUST_courses_space/raw/master/images/A.svg" width="30" height="30"> | <img src="https://github.com/GLGDLY/HKUST_courses_space/raw/master/images/B.svg" width="30" height="30"> | <img src="https://github.com/GLGDLY/HKUST_courses_space/raw/master/images/A.svg" width="30" height="30"> |
+| <img src="../../images/B.svg" width="30" height="30"> | <img src="../../images/A.svg" width="30" height="30"> | <img src="../../images/B.svg" width="30" height="30"> | <img src="../../images/A.svg" width="30" height="30"> |
 
 ***Overall Rating:***
 
-<img src="https://github.com/GLGDLY/HKUST_courses_space/raw/master/images/A.svg" width="50" height="50">
+<img src="../../images/A.svg" width="50" height="50">
 
 ## Reviews
 

@@ -5,12 +5,8 @@ from statics import Rating, RatingSVG
 
 readme_replace_regex = re_compile(r"<!-- BEGIN INPUT -->[\s\S]*<!-- END INPUT -->")
 
-img_relative_path_in_reviews = "![](../../images/{})"
 img_relative_path_in_root = "![](./images/{})"
-img_path_with_size = (
-    '<img src="https://github.com/GLGDLY/HKUST_courses_space/raw/master/images/{}" '
-    'width="{}" height="{}">'
-)
+img_relative_path_in_reviews_sized = '<img src="../../images/{}" width="{}" height="{}">'
 
 
 class ReviewParser:
@@ -75,20 +71,20 @@ class ReviewParser:
             + "|"
             + (len(d["Contents"]) * " ---------------- |")
         )
-        d["Rating for Content"] = img_path_with_size.format(
+        d["Rating for Content"] = img_relative_path_in_reviews_sized.format(
             RatingSVG[d["Rating for Content"]], 30, 30
         )
-        d["Rating for Teaching"] = img_path_with_size.format(
+        d["Rating for Teaching"] = img_relative_path_in_reviews_sized.format(
             RatingSVG[d["Rating for Teaching"]], 30, 30
         )
-        d["Rating for Grade"] = img_path_with_size.format(
+        d["Rating for Grade"] = img_relative_path_in_reviews_sized.format(
             RatingSVG[d["Rating for Grade"]], 30, 30
         )
-        d["Rating for Workload"] = img_path_with_size.format(
+        d["Rating for Workload"] = img_relative_path_in_reviews_sized.format(
             RatingSVG[d["Rating for Workload"]], 30, 30
         )
-        d["Rating Overall"] = img_path_with_size.format(
-            RatingSVG[d["Rating Overall"]], 40, 40
+        d["Rating Overall"] = img_relative_path_in_reviews_sized.format(
+            RatingSVG[d["Rating Overall"]], 60, 60
         )
 
         d["ISSUE ID"] = issue_id
@@ -134,7 +130,7 @@ class ReadmeIO:
         for course in all_courses:
             course_content += "| [{}]({}) | {} | {} |\n".format(
                 course,
-                "./reviews/" + course,
+                "./reviews/" + course + "/README.md",
                 all_courses[course]["intro"],
                 img_relative_path_in_root.format(
                     RatingSVG[
@@ -161,7 +157,7 @@ class CourseReadmeIO:
 
     def write(self, course: dict, course_code: str):
         # calculate course average rating and save as svg for course->README.md
-        content_avg_rating = img_path_with_size.format(
+        content_avg_rating = img_relative_path_in_reviews_sized.format(
             RatingSVG[
                 round(
                     sum(course["content_rating_sum"].values())
@@ -171,7 +167,7 @@ class CourseReadmeIO:
             30,
             30,
         )
-        teaching_avg_rating = img_path_with_size.format(
+        teaching_avg_rating = img_relative_path_in_reviews_sized.format(
             RatingSVG[
                 round(
                     sum(course["teaching_rating_sum"].values())
@@ -181,7 +177,7 @@ class CourseReadmeIO:
             30,
             30,
         )
-        grade_avg_rating = img_path_with_size.format(
+        grade_avg_rating = img_relative_path_in_reviews_sized.format(
             RatingSVG[
                 round(
                     sum(course["grade_rating_sum"].values())
@@ -191,7 +187,7 @@ class CourseReadmeIO:
             30,
             30,
         )
-        workload_avg_rating = img_path_with_size.format(
+        workload_avg_rating = img_relative_path_in_reviews_sized.format(
             RatingSVG[
                 round(
                     sum(course["workload_rating_sum"].values())
@@ -201,7 +197,7 @@ class CourseReadmeIO:
             30,
             30,
         )
-        overall_avg_rating = img_path_with_size.format(
+        overall_avg_rating = img_relative_path_in_reviews_sized.format(
             RatingSVG[
                 round(
                     sum(course["overall_rating_sum"].values())
